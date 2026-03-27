@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="auth-page">
+    <div class="auth-layout">
+        <div class="auth-card">
+            <div class="auth-badge">Get Started</div>
+            <h1>Create your account</h1>
+            <p>Join and start uploading, organizing, and sharing your PDFs.</p>
+
+            <form action="/register" method="post" class="auth-form">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirmation" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+
+            <div class="auth-bottom-text">
+                Already have an account?
+                <a href="/login">Login here</a>
+            </div>
+        </div>
+
+        <div class="auth-info-card">
+            <h2>What you can do</h2>
+
+            <div class="info-item">
+                <span>🔐</span>
+                <div>
+                    <h3>Private Storage</h3>
+                    <p>Your documents stay in your own protected account.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span>⚡</span>
+                <div>
+                    <h3>Fast Access</h3>
+                    <p>Upload, pin, and open PDFs without clutter.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span>🌐</span>
+                <div>
+                    <h3>Smart Sharing</h3>
+                    <p>Share your library with friends in a simple way.</p>
+                </div>
+            </div>
+
+            <div class="auth-quote">
+                “Simple document sharing with a modern dashboard.”
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

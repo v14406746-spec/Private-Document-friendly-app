@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <h1>Private Document Friendly</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-wrapper">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+    <script>
+setTimeout(() => {
+    const flashes = document.querySelectorAll(".flash-message");
+
+    flashes.forEach(flash => {
+        flash.style.opacity = "0";
+        flash.style.transform = "translateY(-10px)";
+
+        setTimeout(() => {
+            flash.remove();
+        }, 400); // remove after animation
+    });
+}, 3500); // 3.5 seconds
+</script>
+</body>
+</html>

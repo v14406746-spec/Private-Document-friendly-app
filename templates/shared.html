@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Shared libraries{% endblock %}
+{% block body %}
+<div class="shared-page">
+    <div class="shared-header">
+        <h1>Shared With Me</h1>
+        <p>Shared by friends</p>
+    </div>
+    {% if users %}
+    <div class="shared-users-grid">
+        {% for user in users %}
+            <div class="shared-user-card">
+                <div class="shared-user-info">
+                    <h2>{{user.username}}</h2>
+                    <p>Open library</p>
+                </div>
+                <a href="/shared/{{user.id}}" class="view-library-btn">View</a>
+            </div>
+            {% endfor %}
+    </div>
+    {% else %}
+        <div class="empty-shared">
+            <h2>No shared libraries</h2>
+            <p>No one has shared their PDF library with you yet.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

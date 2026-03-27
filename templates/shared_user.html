@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}{{user.username}} Library{% endblock %}
+{% block body %}
+<div class="shared-user-page">
+    <div class="shared-header">
+        <h1>{{ user.username }}'s Library</h1>
+        <p>All PDFs shared by {{ user.username }}</p>
+        <a href="/shared" class="back-btn"> <- Back </a>
+    </div>
+    {% if pdfs %}
+        <div class="pdf-list">
+            {% for pdf in pdfs %}
+                <div class="pdf-item">
+                    <div>
+                        <h3>{{pdf.title}}</h3>
+                        <p>{{pdf.filename}}</p>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="/open_pdf/{{pdf.id}}">Open</a>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+         {% else %}
+        <div class="empty-shared">
+            <h2>No PDFs available</h2>
+            <p>This user has not uploaded any PDFs yet.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
