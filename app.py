@@ -18,6 +18,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 PROFILE_UPLOAD_FOLDER = os.path.join(app.static_folder, "profile_pics")
 os.makedirs(PROFILE_UPLOAD_FOLDER, exist_ok=True)
 
+
+
 @app.route("/")
 def home():
     if "user_id" in session:
@@ -308,8 +310,9 @@ def logout():
     session.clear()
     return redirect("/login")
 
-"""if __name__ == "__main__":
-    app.run(debug=True)"""
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
 
 
