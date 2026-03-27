@@ -11,9 +11,12 @@
         <h1>Private Document Friendly</h1>
         <div class="nav-links">
             <a href="/">Home</a>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
+            {% if session.get("user_id") %}
             <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
         </div>
     </nav>
 
